@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Sheets API Quickstart</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+<p>Sheets API Quickstart</p>
+
+<!--Add buttons to initiate auth sequence and sign out-->
+<nav>
+    <ul>
+        <li><a href = "/">Inicio</a></li>
+    </ul>
+</nav>
+<pre id="content" style="white-space: pre-wrap;"></pre>
+
+<script type="text/javascript">
+    const SHEET_ID = '1x9b9ArSXqLZ5qEBMQ9MTvyrGVF5xSpaxsDr0bUlbaJA';
+    const ACCESS_TOKEN = 'ya29.a0Aa4xrXPRO2c1awVmDhqhI-_Bn-4hxwhkLq0S9BmZorJVs4yvnMtA5ekEu1PNVnCkrL9TxgErgc163ImHh-xrD7N25ZSvBjD9TjcZYJGy7CuBWWQc-ivR5I50yITJ7UfbpIVZHS6fyjE6pluc6CfASYCLFhU_aCgYKATASARMSFQEjDvL96CD6ytqMmo0eCgL9raBY2Q0163';
+    async function getData(){
+        const request = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/A1:B5`,
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${ACCESS_TOKEN}`
+                }
+            });
+        const data = await request.json();
+        console.log("data: "+ data);
+        for (const indice in data) {
+            console.log(data[indice]);
+            if (indice === 'ROWS'){
+                console.log(data[indice]);
+            }
+        }
+    }
+    getData();
+
+</script>
+</body>
+</html>
